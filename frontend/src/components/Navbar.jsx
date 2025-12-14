@@ -4,10 +4,12 @@ function Navbar() {
   return (
     <div className="bg-slate-600 w-full flex items-center justify-between px-6 py-6">
       {/* Logo */}
-      <img src={ReactLogo} alt="React Logo" className="h-10 w-10" />
-
+      <div className="flex flex-col items-center">
+        <img src={ReactLogo} alt="React Logo" className="h-10 w-10" />
+        <span>Skinscore</span>
+      </div>
       {/* Links */}
-      <ul className=" flex space-x-5 text-white">
+      <ul className="flex space-x-5 text-white">
         <li>
           <a href="#">Home</a>
         </li>
