@@ -1,20 +1,24 @@
-import ReactLogo from "../assets/react.svg";
+import Logo from "../assets/mask.png";
 
 function Navbar() {
   return (
-    <div className="bg-slate-600 w-full flex items-center justify-between px-6 py-6">
+    <div className="bg-[#DBE2EF] shadow-md w-full flex items-center justify-between px-10 py-5 text-[#3F72AF]">
       {/* Logo */}
-      <div className="flex flex-col items-center">
-        <img src={ReactLogo} alt="React Logo" className="h-10 w-10" />
-        <span>Skinscore</span>
+      <div className="flex flex-row items-center space-x-3">
+        <img src={Logo} alt="React Logo" className="w-16" />
+        <span className="font-sans font-bold text-4xl shadow-sm">Maomao</span>
       </div>
       {/* Links */}
-      <ul className="flex space-x-5 text-white">
+      <ul className="flex space-x-5 ">
         <li>
-          <a href="#">Home</a>
+          <a className="text-xl font-bold font-sans shadow-sm" href="#">
+            Home
+          </a>
         </li>
         <li>
-          <a href="#">About</a>
+          <a className="text-xl font-bold font-sans shadow-sm" href="#">
+            About
+          </a>
         </li>
       </ul>
     </div>

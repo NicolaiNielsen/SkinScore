@@ -1,38 +1,61 @@
 import "./App.css";
 import Navbar from "./components/Navbar";
-import Cream from "./assets/creames.png";
 import Leaderboard from "./components/Leaderboard";
+import Footer from "./components/Footer";
 
 function App() {
   return (
     <>
       <Navbar />
-      <div className="flex px-20 py-20">
-        <div>
-          <input
-            className="bg-black p-10 text-white"
-            type="text"
-            placeholder="search for a product"
-          />
-          <button className="bg-blue-50 p-10">Search for a product</button>
+      <div className="text-center p-10">
+        <h2 className="font-bold font-sans text-xl">
+          Skincare - Real reviews, Real Routines
+        </h2>
+        <h4>
+          Discover what skincare people actually use. No ads, no bots, just
+          honest experiences.
+        </h4>
+      </div>
+      <div className="flex justify-center items-center gap-4">
+        <input
+          className="bg-white px-4 py-2 rounded-md border-[5px] border-[#DBE2EF] text-black focus:outline-none shadow-md"
+          type="text"
+          placeholder="search for a product"
+        />
+        <button className="bg-blue-100 px-5 py-3 rounded-md font-sans text-black shadow-md hover:shadow-lg transition duration-200">
+          Search for a product
+        </button>
+      </div>
 
-          <h2 className="font-bold">Skincare - Real reviews, Real Routines</h2>
-          <h4>
-            Discover what skincare people actually use. No ads, no bots, just
-            honest experiences.cd
-          </h4>
-        </div>
-        <div>
-          <img className="w-30 h-30" src={Cream} alt="" />
-        </div>
+      <div className="m-10 flex flex-wrap justify-center gap-4">
+        <button className="bg-blue-100 px-5 py-1 rounded-md font-sans text-black shadow-md hover:shadow-lg transition duration-200">
+          Cleanser
+        </button>
+        <button className="bg-blue-100 px-5 py-1 rounded-md font-sans text-black shadow-md hover:shadow-lg transition duration-200">
+          Sunscreens
+        </button>
+        <button className="bg-blue-100 px-5 py-1 rounded-md font-sans text-black shadow-md hover:shadow-lg transition duration-200">
+          Serums & Essences
+        </button>
+        <button className="bg-blue-100 px-5 py-1 rounded-md font-sans text-black shadow-md hover:shadow-lg transition duration-200">
+          Toners
+        </button>
+        <button className="bg-blue-100 px-5 py-1 rounded-md font-sans text-black shadow-md hover:shadow-lg transition duration-200">
+          Moisturizers
+        </button>
+        <button className="bg-blue-100 px-5 py-1 rounded-md font-sans text-black shadow-md hover:shadow-lg transition duration-200">
+          All
+        </button>
       </div>
-      <div className="flex flex-col items-center">
-        <h1 className="font-bold">
-          Discover the best ranked skincare products
-        </h1>
-        <h2>Highest-Ranking Products from our community</h2>
+      <div className="m-0">
+        <Leaderboard></Leaderboard>
+        <Leaderboard></Leaderboard>
+        <Leaderboard></Leaderboard>
+        <Leaderboard></Leaderboard>
+        <Leaderboard></Leaderboard>
+        <Leaderboard></Leaderboard>
       </div>
-      <Leaderboard></Leaderboard>
+      <Footer />
     </>
   );
 }
