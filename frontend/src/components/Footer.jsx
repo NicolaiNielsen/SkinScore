@@ -15,10 +15,10 @@ function Footer() {
           Home
         </a>
         <a href="#" className="text-sm font-sans hover:underline">
-          About
+          https://www.linkedin.com/in/nicolai-aphichat-nielsen-1335832ba/
         </a>
         <a href="#" className="text-sm font-sans hover:underline">
-          Contact
+          https://www.linkedin.com/in/nicolai-aphichat-nielsen-1335832ba/
         </a>
       </div>
 
