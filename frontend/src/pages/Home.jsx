@@ -53,6 +53,7 @@ function Home() {
         <Leaderboard></Leaderboard>
         <Leaderboard></Leaderboard>
         <Leaderboard></Leaderboard>
+        <Leaderboard></Leaderboard>
       </div>
       <Footer />
     </>
