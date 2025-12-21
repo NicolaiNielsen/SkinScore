@@ -14,11 +14,11 @@ function Footer() {
         <a href="#" className="text-sm font-sans hover:underline">
           Home
         </a>
-        <a href="#" className="text-sm font-sans hover:underline">
-          https://www.linkedin.com/in/nicolai-aphichat-nielsen-1335832ba/
-        </a>
-        <a href="#" className="text-sm font-sans hover:underline">
-          https://www.linkedin.com/in/nicolai-aphichat-nielsen-1335832ba/
+        <a
+          href="https://www.linkedin.com/in/nicolai-aphichat-nielsen-1335832ba/"
+          className="text-sm font-sans hover:underline"
+        >
+          Linkedin
         </a>
       </div>
 

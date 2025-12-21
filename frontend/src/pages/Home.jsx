@@ -1,8 +1,21 @@
 import Navbar from "../components/Navbar";
 import Leaderboard from "../components/Leaderboard";
 import Footer from "../components/Footer";
+import LeaderboardData from "../../data/data.js";
 
 function Home() {
+  const skincareProducts = LeaderboardData.map((product, index) => {
+    return (
+      <Leaderboard
+        key={index} // always add a unique key for lists in React
+        productname={product.title}
+        imgurl={product.img.src}
+        numberofratings={product.numberofratings}
+        rating={product.rating}
+      />
+    );
+  });
+
   return (
     <>
       <Navbar />
@@ -46,15 +59,7 @@ function Home() {
           All
         </button>
       </div>
-      <div className="m-0">
-        <Leaderboard></Leaderboard>
-        <Leaderboard></Leaderboard>
-        <Leaderboard></Leaderboard>
-        <Leaderboard></Leaderboard>
-        <Leaderboard></Leaderboard>
-        <Leaderboard></Leaderboard>
-        <Leaderboard></Leaderboard>
-      </div>
+      <div className="m-0">{skincareProducts}</div>
       <Footer />
     </>
   );
