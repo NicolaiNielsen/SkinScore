@@ -2,6 +2,8 @@ import Navbar from "../components/Navbar";
 import Leaderboard from "../components/Leaderboard";
 import Footer from "../components/Footer";
 import LeaderboardData from "../../data/data.js";
+import Fox from "../components/Fox.jsx";
+import { useState } from "react";
 
 function Home() {
   const skincareProducts = LeaderboardData.map((product, index) => {
@@ -15,10 +17,25 @@ function Home() {
       />
     );
   });
+  const [searchQuery, setSearchQuery] = useState("");
+  const [showRecommendation, setShowRecommendation] = useState(false);
+
+  function showRecommendation() {
+    setShowRecommendation((prev) => !prev);
+  }
+
+  function passToRouter() {
+    console.log(searchQuery);
+  }
+
+  function handleSearch(e) {
+    setSearchQuery(e.target.value);
+  }
 
   return (
     <>
       <Navbar />
+
       <div className="text-center p-10">
         <h2 className="font-bold font-sans text-xl">
           Skincare - Real reviews, Real Routines
@@ -26,17 +43,20 @@ function Home() {
         <h4>
           Discover what skincare people actually use. No ads, no bots, just
           honest experiences.
+          {searchQuery}
         </h4>
       </div>
       <div className="flex justify-center items-center gap-4">
-        <input
-          className="bg-white px-4 py-2 rounded-md border-[5px] border-[#DBE2EF] text-black focus:outline-none shadow-md"
-          type="text"
-          placeholder="search for a product"
-        />
-        <button className="bg-blue-100 px-5 py-3 rounded-md font-sans text-black shadow-md hover:shadow-lg transition duration-200">
-          Search for a product
-        </button>
+        <form className="space-x-5" onChange={handleSearch}>
+          <input
+            className="bg-white px-4 py-2 rounded-md border-[5px] border-[#DBE2EF] text-black focus:outline-none shadow-md"
+            type="text"
+            placeholder="search for a product"
+          />
+          <button className="bg-blue-100 px-5 py-3 rounded-md font-sans text-black shadow-md hover:shadow-lg transition duration-200">
+            Search for a product
+          </button>
+        </form>
       </div>
 
       <div className="m-10 flex flex-wrap justify-center gap-4">
