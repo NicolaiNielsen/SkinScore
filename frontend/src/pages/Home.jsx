@@ -18,11 +18,6 @@ function Home() {
     );
   });
   const [searchQuery, setSearchQuery] = useState("");
-  const [showRecommendation, setShowRecommendation] = useState(false);
-
-  function showRecommendation() {
-    setShowRecommendation((prev) => !prev);
-  }
 
   function passToRouter() {
     console.log(searchQuery);

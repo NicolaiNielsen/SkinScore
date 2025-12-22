@@ -6,7 +6,7 @@ function Recommendations() {
   const [skinConcerns, setSkinConcerns] = useState([]); //using set also causes rerendering of the componenet, how is it possiblre for react to rerender the component withouth the page?
   const [showRecommendation, setShowRecommendation] = useState(false);
 
-  function showRecommendation() {
+  function toggleRecommendations() {
     setShowRecommendation((prev) => !prev);
   }
 
@@ -49,6 +49,12 @@ function Recommendations() {
           ))}
         </ul>
       </div>
+      <button onClick={toggleRecommendations}>tetss</button>
+      {showRecommendation === true && (
+        <div>
+          <h1>Skinscare recommendations based on your concerns</h1>
+        </div>
+      )}
       <Footer />
     </>
   );
