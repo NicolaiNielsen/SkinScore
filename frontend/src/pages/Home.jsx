@@ -13,7 +13,7 @@ function Home() {
         productname={product.title}
         imgurl={product.img.src}
         numberofratings={product.numberofratings}
-        rating={product.rating}
+        rating={product.rating} //key
       />
     );
   });
