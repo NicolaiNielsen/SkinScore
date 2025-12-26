@@ -67,7 +67,7 @@ function Recommendations() {
                 className="bg-slate-400 rounded-md px-6 py-3 text-center"
                 onClick={toggleRecommendations}
               >
-                Show Recommendations
+                Show Recommendationssas
               </button>
             </div>
           </div>
