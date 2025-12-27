@@ -3,13 +3,21 @@ import Navbar from "../components/Navbar";
 import Resposne from "../components/Response";
 import { useState } from "react";
 import Skinconcerns from "../components/Skinconcerns";
+import { getSkincare } from "../../../backend/AI";
 
 function Recommendations() {
   const [skinConcerns, setSkinConcerns] = useState([]);
   const [showRecommendation, setShowRecommendation] = useState(false);
+  const [recommendation, setRecommendation] = useState("");
+  const [loading, setLoading] = useState(false);
 
   function toggleRecommendations() {
     setShowRecommendation((prev) => !prev);
+  }
+
+  async function getRecommendation() {
+    const response = await getSkincare(skinConcerns);
+    console.log(response);
   }
 
   function addToConcerns(e) {
@@ -47,7 +55,7 @@ function Recommendations() {
       {/* Only show the list if there are concerns */}
       {skinConcerns.length > 0 && (
         <Skinconcerns
-          toggleRecommendations={toggleRecommendations}
+          getRecommendation={getRecommendation}
           skinConcerns={skinConcerns}
         />
       )}

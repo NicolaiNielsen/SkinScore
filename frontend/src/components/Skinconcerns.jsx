@@ -19,7 +19,7 @@ export default function Skinconcerns(props) {
         <div>
           <button
             className="bg-slate-400 rounded-md px-6 py-3 text-center"
-            onClick={props.toggleRecommendations}
+            onClick={props.getRecommendation}
           >
             Show Recommendations
           </button>
