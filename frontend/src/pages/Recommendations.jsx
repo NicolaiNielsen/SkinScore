@@ -1,6 +1,8 @@
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
+import Resposne from "../components/Response";
 import { useState } from "react";
+import Skinconcerns from "../components/Skinconcerns";
 
 function Recommendations() {
   const [skinConcerns, setSkinConcerns] = useState([]);
@@ -44,42 +46,14 @@ function Recommendations() {
 
       {/* Only show the list if there are concerns */}
       {skinConcerns.length > 0 && (
-        <div className="mb-10 ml-7 mr-7">
-          <h2 className="font-bold font-sans text-l">
-            List of skincare concerns
-          </h2>
-          <ul className="list-disc pl-5">
-            {skinConcerns.map((concern, index) => (
-              <li key={index}>{concern}</li>
-            ))}
-          </ul>
-          {/* Generate box */}
-
-          <div className="bg-slate-500 rounded-md h-28 mt-9 flex flex-row  justify-between items-center p-10">
-            <div className="flex flex-col">
-              <h1 className="font-bold">
-                Tryk her for at genere skinrecommendations
-              </h1>
-              <p>Vi giver dig en personlig hudpleje routine</p>
-            </div>
-            <div>
-              <button
-                className="bg-slate-400 rounded-md px-6 py-3 text-center"
-                onClick={toggleRecommendations}
-              >
-                Show Recommendationssas
-              </button>
-            </div>
-          </div>
-        </div>
+        <Skinconcerns
+          toggleRecommendations={toggleRecommendations}
+          skinConcerns={skinConcerns}
+        />
       )}
 
       {/* Skincare recommendations */}
-      {showRecommendation && (
-        <div>
-          <h1>Skincare recommendations based on your concerns</h1>
-        </div>
-      )}
+      {showRecommendation && <Response />}
 
       <Footer />
     </>
