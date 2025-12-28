@@ -72,3 +72,5 @@ secrets/
 # Testing
 coverage/
 .nyc_output/
+
+venv/
