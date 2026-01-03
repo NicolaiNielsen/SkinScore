@@ -1,68 +1,69 @@
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
-import Resposne from "../components/Response";
-import { useState } from "react";
+import Response from "../components/Response";
 import Skinconcerns from "../components/Skinconcerns";
-import { getSkincare } from "../../../backend/AI";
+import { useState } from "react";
 
 function Recommendations() {
   const [skinConcerns, setSkinConcerns] = useState([]);
-  const [showRecommendation, setShowRecommendation] = useState(false);
-  const [recommendation, setRecommendation] = useState("");
+  const [recommendation, setRecommendation] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  function toggleRecommendations() {
-    setShowRecommendation((prev) => !prev);
-  }
-
   async function getRecommendation() {
-    const response = await getSkincare(skinConcerns);
-    console.log(response);
+    try {
+      setLoading(true);
+
+      const res = await fetch("http://localhost:3000/api/products");
+      const data = await res.json();
+
+      console.log("Backend response:", data);
+      setRecommendation(data);
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
   }
 
   function addToConcerns(e) {
-    e.preventDefault(); // Prevent page reload
+    e.preventDefault();
     const newConcern = e.target.skinconcerns.value.trim();
     if (newConcern) {
       setSkinConcerns((prev) => [...prev, newConcern]);
-      e.target.reset(); // clear input after adding
+      e.target.reset();
     }
   }
 
   return (
     <>
       <Navbar />
-      <div className="flex flex-col justify-center items-center mt-10 mb-10">
-        <h1 className="font-bold font-sans text-xl">
-          Search for skincare recommendations
-        </h1>
-        <h4>Enter different skincare concerns and get recommended products.</h4>
-        <div className="flex flex-row space-x-5 mt-10">
-          <form className="space-x-5" onSubmit={addToConcerns}>
-            <input
-              className="bg-slate-400 rounded-md pt-2 pb-2 pl-4 pr-4 text-white placeholder-gray-50"
-              type="text"
-              placeholder="Enter skin concern"
-              name="skinconcerns"
-            />
-            <button className="pt-2 pb-2 pl-4 pr-4 text-white bg-slate-400 rounded-md">
-              Add
-            </button>
-          </form>
-        </div>
+
+      <div className="flex flex-col items-center mt-10">
+        <h1 className="text-xl font-bold">Search skincare recommendations</h1>
+        <form onSubmit={addToConcerns} className="mt-6 space-x-4">
+          <input
+            name="skinconcerns"
+            placeholder="Enter skin concern"
+            className="bg-slate-300 p-2 rounded"
+          />
+          <button className="bg-slate-600 text-white p-2 rounded">Add</button>
+        </form>
+
+        {skinConcerns.length > 0 && (
+          <Skinconcerns
+            skinConcerns={skinConcerns}
+            getRecommendation={getRecommendation}
+          />
+        )}
+        {loading && <p>Loading...</p>}
+
+        <Response recommendation={recommendation} />
       </div>
-
-      {/* Only show the list if there are concerns */}
-      {skinConcerns.length > 0 && (
-        <Skinconcerns
-          getRecommendation={getRecommendation}
-          skinConcerns={skinConcerns}
-        />
+      {Array.isArray(recommendation) ? (
+        recommendation.map((rec, index) => <p key={index}>{rec.message}</p>)
+      ) : (
+        <p>{recommendation.message}</p>
       )}
-
-      {/* Skincare recommendations */}
-      {showRecommendation && <Response />}
-
       <Footer />
     </>
   );
